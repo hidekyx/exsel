@@ -84,16 +84,16 @@ if($this->session->status !== ('Logged'))
       </li>
       <?php endif; ?>
       
-	  <li class="nav-item <?php if($page=='Sub Kriteria'){echo 'active';}?>">
+	  <!-- <li class="nav-item <?php if($page=='Sub Kriteria'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Sub_kriteria'); ?>">
           <i class="fas fa-fw fa-cubes"></i>
           <span>Sub Kriteria</span></a>
-      </li>
+      </li> -->
 
     <li class="nav-item <?php if($page=='Aspek Kriteria'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Aspek_Kriteria'); ?>">
           <i class="fas fa-tags"></i>
-          <span>Aspek Kriteria</span></a>
+          <span>Sub Kriteria</span></a>
       </li>
 	  
 	  <li class="nav-item <?php if($page=='Alternatif'){echo 'active';}?>">

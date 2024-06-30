@@ -25,8 +25,22 @@
                 $min_value =  min($value);
                 $max_value =  max($value);
 
-                if($value_sub_kriteria >= $min_value && $value_sub_kriteria <= $max_value) {
-                    $id_sub_kriteria = $q['id_sub_kriteria'];
+                if($value_sub_kriteria >= $min_value) {
+                    if($value_sub_kriteria <= $max_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
+                    elseif($min_value == $max_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
+                }
+
+                if($value_sub_kriteria <= $max_value) {
+                    if($value_sub_kriteria >= $min_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
+                    elseif($min_value == $max_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
                 }
             }
 
@@ -51,8 +65,22 @@
                 $min_value =  min($value);
                 $max_value =  max($value);
 
-                if($value_sub_kriteria >= $min_value && $value_sub_kriteria <= $max_value) {
-                    $id_sub_kriteria = $q['id_sub_kriteria'];
+                if($value_sub_kriteria >= $min_value) {
+                    if($value_sub_kriteria <= $max_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
+                    elseif($min_value == $max_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
+                }
+
+                if($value_sub_kriteria <= $max_value) {
+                    if($value_sub_kriteria >= $min_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
+                    elseif($min_value == $max_value) {
+                        $id_sub_kriteria = $q['id_sub_kriteria'];
+                    }
                 }
             }
 

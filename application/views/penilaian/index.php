@@ -70,7 +70,7 @@ $this->load->view('layouts/header_admin'); ?>
 																	$range_bawah = $this->Sub_Kriteria_model->get_range_bawah($key->id_kriteria);
 																?>
 																	<input type="text" name="value_type[]" value="number" hidden>
-																	<input name="id_sub_kriteria[]" type="number" max="<?= $range_atas ?>" min="<?= $range_bawah ?>" class="form-control" id="<?= $key->id_kriteria ?>" required>
+																	<input name="id_sub_kriteria[]" step=".01" type="number" max="<?= $range_atas ?>" min="<?= $range_bawah ?>" class="form-control" id="<?= $key->id_kriteria ?>" required>
 																<?php endif ?>
 															</div>
 														<?php endif ?>

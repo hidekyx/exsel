@@ -66,13 +66,13 @@
 						</thead>
 						<tbody>
 							<?php
-							$sub_kriteria = $this->Perhitungan_model->get_sub_kriteria($key->id_kriteria);
+							$sub_kriteria = $this->Perhitungan_model->get_aspek_kriteria($key->id_kriteria);
 							foreach ($sub_kriteria as $keys): ?>
 							<tr align="center">
-								<td><?= $keys->nama_sub_kriteria; ?></td>
+								<td><?= $keys->nama_aspek; ?></td>
 								<td>
 								<?php
-									$data_nilai_sub = $this->Perhitungan_model->data_nilai_sub($key->id_kriteria,$keys->id_sub_kriteria);
+									$data_nilai_sub = $this->Perhitungan_model->data_nilai_aspek($key->id_kriteria,$keys->id_aspek_kriteria);
 									echo $data_nilai_sub['nilai'];
 								?>
 								</td>
