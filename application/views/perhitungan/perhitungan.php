@@ -120,7 +120,12 @@
 						<td>
 						<?php 
 							$data_pencocokan = $this->Perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
-							echo $data_pencocokan['nilai_mentah'];
+							if($data_pencocokan) {
+								echo $data_pencocokan['nilai_mentah'];
+							}
+							else {
+								echo '-';
+							}
 						?>
 						</td>
 						<?php endforeach ?>
@@ -164,7 +169,12 @@
 						<td>
 						<?php 
 							$data_pencocokan = $this->Perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
-							echo $data_pencocokan['nilai'];
+							if($data_pencocokan) {
+								echo $data_pencocokan['nilai'];
+							}
+							else {
+								echo '-';
+							}
 						?>
 						</td>
 						<?php endforeach ?>
@@ -212,10 +222,14 @@
 						<td>
 						<?php 
 							$data_pencocokan = $this->Perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
-							$a = $data_pencocokan['nilai']*$key->nilai;
-							$t_a += $a;
-							echo $a;
-							//echo $data_pencocokan['nilai']." x ".$key->nilai;
+							if($data_pencocokan) {
+								$a = $data_pencocokan['nilai']*$key->nilai;
+								$t_a += $a;
+								echo $a;
+							}
+							else {
+								echo '-';
+							}
 						?>
 						</td>
 						<?php endforeach ?>

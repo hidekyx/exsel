@@ -36,17 +36,39 @@
 							<?php
 							$no = 1;
 							foreach ($hasil as $keys) : ?>
+								<?php if($keys->nilai) : ?>
 								<tr align="center">
 									<td align="left">
-										<a href="#" class="open-modal" data-nama="<?= $keys->nama ?>" data-catatan="<?= $keys->catatan ?>" <?php foreach ($kriteria as $key) : ?> data-<?= str_replace(' ', '', strtolower($key->nama_kriteria)) ?>="<?= $this->Perhitungan_model->data_nilai($keys->id_alternatif, $key->id_kriteria)['nilai_mentah']; ?>" <?php endforeach; ?>>
+										<a href="#" class="open-modal" data-nama="<?= $keys->nama ?>" data-catatan="<?= $keys->catatan ?>" 
+											<?php foreach ($kriteria as $key) : ?> 
+												<?php $nilai_mentah = $this->Perhitungan_model->data_nilai($keys->id_alternatif, $key->id_kriteria)['nilai_mentah']; ?>
+												data-<?= str_replace(' ', '', strtolower($key->nama_kriteria)) ?>="<?= $nilai_mentah ?>" 
+											<?php endforeach; ?>>
 											<?= $keys->nama ?>
 										</a>
 									</td>
 									<td><?= $keys->nilai ?></td>
 									<td><?= $no; ?></td>
 								</tr>
+								<?php endif; ?>
 							<?php
 								$no++;
+							endforeach ?>
+
+							<tr align="center" class="bg-light">
+								<td colspan="3">Data Peserta di bawah ini belum di nilai. <a href="<?= base_url('Penilaian'); ?>">Silahkan nilai terlebih dahulu</a></td>
+							</tr>
+							
+							<?php
+							foreach ($hasil as $keys) : ?>
+								<?php if(!$keys->nilai) : ?>
+								<tr align="center">
+									<td align="left"><?= $keys->nama ?></td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+								<?php endif; ?>
+							<?php
 							endforeach ?>
 						</tbody>
 					</table>

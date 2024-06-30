@@ -40,6 +40,20 @@
             $this->db->update('alternatif', $ubah);
         }
 
+        public function insertOrUpdate($nama)
+        {
+            $id_batch = $this->session->userdata('batch_active');
+            $query = $this->db->query("SELECT * FROM alternatif WHERE nama='$nama' AND id_batch='$id_batch';")->row_array();
+            if(!$query) {
+                $data = [
+                    'nama'	=> $nama,
+                    'id_batch'	=> $id_batch,
+                ];
+                $result = $this->db->insert('alternatif', $data);
+                return $result;
+            }
+        }
+
         public function update_catatan($id_alternatif, $catatan)
         {
             $ubah = array(

@@ -9,6 +9,7 @@
             parent::__construct();
             $this->load->library('pagination');
             $this->load->library('form_validation');
+            $this->load->library('excel');
             $this->load->model('Alternatif_model');
 
             if ($this->session->userdata('id_user_level') != "1") {
@@ -38,6 +39,35 @@
             $this->load->view('alternatif/create',$data);
         }
 
+        public function import()
+        {
+            $data['page'] = "Alternatif";
+            $this->load->view('alternatif/import',$data);
+        }
+
+        public function import_action()
+        {
+            if (isset($_FILES["file"]["name"])) {
+                $path = $_FILES["file"]["tmp_name"];
+                $object = PHPExcel_IOFactory::load($path);
+                foreach($object->getWorksheetIterator() as $worksheet)
+                {
+                    $highestRow = $worksheet->getHighestRow();
+                    $highestColumn = $worksheet->getHighestColumn();	
+                    for($row=2; $row<=$highestRow; $row++)
+                    {
+                        $nama = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                        $this->Alternatif_model->insertOrUpdate($nama);
+                    }
+                }
+                
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
+                redirect('Alternatif');
+            }else{
+                echo "Tidak ada file yang masuk";
+            }
+        }
+
         //menambahkan data ke database
         public function store()
         {
@@ -59,8 +89,6 @@
 				redirect('Alternatif/create');
 				
 			}
-            
-
         }
 
         public function edit($id_alternatif)

@@ -1,9 +1,12 @@
 <?php $this->load->view('layouts/header_admin'); ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Peserta</h1>
+	<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Peserta</h1>
 
-    <a href="<?= base_url('Alternatif/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+	<div>
+		<a href="<?= base_url('Alternatif/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+		<a href="<?= base_url('Alternatif/import'); ?>" class="btn btn-success"> <i class="fa fa-upload"></i> Import Data </a>
+	</div>
 </div>
 
 <?= $this->session->flashdata('message'); ?>
