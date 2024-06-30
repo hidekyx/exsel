@@ -44,6 +44,30 @@
 
         public function delete($id_batch)
         {
+            $alternatif = $this->db->query("SELECT * FROM alternatif WHERE id_batch='$id_batch';");
+            foreach ($alternatif as $a) {
+                $this->db->where('id_batch', $id_batch);
+                $this->db->delete('alternatif');
+            }
+
+            $aspek_kriteria = $this->db->query("SELECT * FROM aspek_kriteria WHERE id_batch='$id_batch';");
+            foreach ($aspek_kriteria as $ak) {
+                $this->db->where('id_batch', $id_batch);
+                $this->db->delete('aspek_kriteria');
+            }
+
+            $kriteria = $this->db->query("SELECT * FROM kriteria WHERE id_batch='$id_batch';");
+            foreach ($kriteria as $k) {
+                $this->db->where('id_batch', $id_batch);
+                $this->db->delete('kriteria');
+            }
+
+            $sub_kriteria = $this->db->query("SELECT * FROM sub_kriteria WHERE id_batch='$id_batch';");
+            foreach ($sub_kriteria as $sk) {
+                $this->db->where('id_batch', $id_batch);
+                $this->db->delete('sub_kriteria');
+            }
+
             $this->db->where('id_batch', $id_batch);
             $this->db->delete('batch');
         }
